@@ -1,0 +1,82 @@
+%% we are given the candidate set as in(X) and undefeated by undefeated(X)
+
+#external in(X) : premise(X).
+#external undefeated(X) : premise(X).
+#external in(R) : head(R,_).
+#external undefeated(R) : head(R,_).
+
+%% preferred(X,Z) --> Z <= X. 
+%% not_less_preferred(X,Y) --> not(X<Y)
+preferred(X,Z) :- preferred(X,Y), preferred(Y,Z).
+strictly_less_preferred(X,Y) :- preferred(Y,X), not preferred(X,Y).
+not_less_preferred(X,Y) :- premise(X), premise(Y), not strictly_less_preferred(X,Y).
+not_less_preferred(X,Y) :- head(X,_), head(Y,_), not strictly_less_preferred(X,Y).
+
+% contradictoriness is symmetric
+contradictory(X,Y) :- contradictory(Y,X).
+
+% All axioms and strict rules are automatically in, so don't need to be added separately every time
+in(X) :- axiom(X).
+in(R) :- strict_head(R,_).
+
+%% Axioms and a subset of premises and defeasible rules are suspect
+suspect(X) :- axiom(X).
+suspect(X) :- undefeated(X), not other(X).
+other(X) :- premise(X), not suspect(X).
+other(R) :- head(R,_), not suspect(R).
+
+%% Derivable from suspects (and axioms)
+supported_by_suspects(X) :- axiom(X).
+supported_by_suspects(X) :- premise(X), suspect(X).
+supported_by_suspects(X) :- head(R,X), triggered_by_suspects(R).
+supported_by_suspects(X) :- strict_head(R,X), triggered_by_suspects(R).
+triggered_by_suspects(R) :- suspect(R), head(R,_), supported_by_suspects(X) : body(R,X).
+triggered_by_suspects(R) :- suspect(R), strict_head(R,_), supported_by_suspects(X) : strict_body(R,X).
+
+%% suspects are not considered if not all suspect-rules are applicable 
+:- suspect(R), not triggered_by_suspects(R), head(R,_).
+
+%% Find P' and D'
+pref_premise(X) :- premise(X), in(X), not_less_preferred(X,Y), premise(Y), suspect(Y).
+pref_rule(R) :- head(R,_), in(R), not_less_preferred(R,Y), head(Y,_), suspect(Y).
+
+%% Derivable from (P',D) 
+supported_by_pref_premises(X) :- pref_premise(X).
+supported_by_pref_premises(X) :- axiom(X).
+supported_by_pref_premises(X) :- head(R,X), triggered_by_pref_premises(R).
+supported_by_pref_premises(X) :- strict_head(R,X), triggered_by_pref_premises(R).
+triggered_by_pref_premises(R) :- in(R), strict_head(R,_), supported_by_pref_premises(X) : strict_body(R,X).
+
+%% Derivable from (P,D')
+supported_by_pref_rules(X) :- premise(X), in(X).
+supported_by_pref_rules(X) :- axiom(X).
+supported_by_pref_rules(X) :- head(R,X), triggered_by_pref_rules(R).
+supported_by_pref_rules(X) :- strict_head(R,X), triggered_by_pref_rules(R).
+triggered_by_pref_rules(R) :- pref_rule(R), supported_by_pref_rules(X) : body(R,X).
+triggered_by_pref_rules(R) :- strict_head(R,_), supported_by_pref_rules(X) : strict_body(R,X).
+
+%% suspect includes premises
+suspect_includes_premises :- suspect(X), premise(X).
+
+%% Successful rebuts to any suspect
+rebutted_suspect :- head(R,X), suspect(R), supported_by_pref_premises(Y), contradictory(X,Y), suspect_includes_premises.
+rebutted_suspect :- head(R,X), suspect(R), supported_by_pref_rules(Y), contradictory(X,Y). 
+
+%% Check if suspects a subset of in and if in rebuts suspects
+subset :- in(X) : suspect(X).
+
+%%% Counterexample: either suspect is a subset of in, or 
+%%% suspect is not a subset of in and in does not attack suspects
+%% Not a counterexample if suspect is a subset of in 
+:- subset.
+
+%% not a counterexample if suspects defeated
+:- rebutted_suspect.
+
+#show in/1.
+#show suspect/1.
+#show rebutted_suspect/0.
+#show subset/0.
+#show supported_by_suspects/1.
+#show supported_by_pref_premises/1.
+#show supported_by_pref_rules/1.

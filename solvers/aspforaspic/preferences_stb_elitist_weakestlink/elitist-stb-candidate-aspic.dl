@@ -1,0 +1,69 @@
+%% preferred(X,Z) --> Z <= X. 
+%% not_less_preferred(X,Y) --> not(X<Y)
+preferred(X,Z) :- preferred(X,Y), preferred(Y,Z).
+strictly_less_preferred(X,Y) :- preferred(Y,X), not preferred(X,Y).
+not_less_preferred(X,Y) :- premise(X), premise(Y), not strictly_less_preferred(X,Y).
+not_less_preferred(X,Y) :- head(X,_), head(Y,_), not strictly_less_preferred(X,Y).
+
+%% contradictoriness is symmetric
+contradictory(X,Y) :- contradictory(Y,X).
+
+%% Axioms and a subset of premises are in
+in(X) :- axiom(X).
+in(X) :- premise(X), not out(X).
+in(R) :- strict_head(R,_).
+out(X) :- premise(X), not in(X).
+
+%% a subset of defeasible rules are in
+in(R) :- head(R,_), not out(R).
+out(R) :- head(R,_), not in(R).
+
+%% Everything derivable from premises that are in (+ axioms) using rules that are in 
+supported(X) :- axiom(X).
+supported(X) :- premise(X), in(X).
+supported(X) :- head(R,X), triggered_by_in(R).
+supported(X) :- strict_head(R,X), triggered_by_in(R).
+triggered_by_in(R) :- in(R), head(R,_), supported(X) : body(R,X).
+triggered_by_in(R) :- in(R), strict_head(R,_), supported(X) : strict_body(R,X).
+
+%% All rules in the candidate applicable by the candidate
+:- in(R), not triggered_by_in(R), head(R,_).
+
+%%%%% Successful attacks to individual premises and defeasible rules
+%% defeasible rules and premises undercut or contrary undermined by in 
+defeated(X) :- supported(Y), contrary(X,Y), head(X,_).
+defeated(X) :- supported(Y), contradictory(X,Y), head(X,_).
+defeated(X) :- supported(Y), contrary(X,Y), premise(X).
+
+%% defeasible rules contrary rebutted by in
+defeated(X) :- head(X,S), supported(Y), contrary(S,Y).
+%% contradictory rebut for conflict-freeness
+contradictory_rebut_conflict(X) :- head(X,S), supported(Y), contradictory(S,Y).
+
+%% Derivable from (P',D) 
+preferredly_supported(X,Y) :- premise(X), in(X), not_less_preferred(X,Y), premise(Y).
+preferredly_supported(X,Y) :- axiom(X), premise(Y).
+preferredly_supported(X,Y) :- head(R,X), triggered_by_pref_premises(R,Y).
+preferredly_supported(X,Y) :- strict_head(R,X), triggered_by_pref_premises(R,Y).
+triggered_by_pref_premises(R,Y) :- premise(Y), in(R), strict_head(R,_), preferredly_supported(X,Y) : strict_body(R,X).
+
+%% Successful (contradictory) undermine
+defeated(X) :- preferredly_supported(Y,X), contradictory(X,Y), premise(X).
+
+%% Conflict-freeness (for both premises and rules)
+:- in(X), defeated(X).
+:- in(X), contradictory_rebut_conflict(X).
+% the last two for the possible special case where the negation of a sentence that is the head of a strict rule is derived -> only holds with certain (reasonable) assumptions)
+:- supported(X), supported(Y), contrary(X,Y).
+:- supported(X), supported(Y), contradictory(X,Y).
+
+%% collect undefeated elements for the next step
+undefeated(X) :- premise(X), not defeated(X).
+undefeated(R) :- head(R,_), not defeated(R).
+
+%% in can not be stable if an outside premise is undefeated
+:- premise(X), out(X), undefeated(X).
+
+#show in/1.
+%#show undefeated/1.
+#show supported/1.

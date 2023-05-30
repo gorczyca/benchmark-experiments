@@ -1,0 +1,73 @@
+%% Axioms and a subset of premises are in
+in(X) :- axiom(X).
+in(X) :- premise(X), not out(X).
+out(X) :- premise(X), not in(X).
+
+%% Strict rules and a subset of defeasible rules are in
+in(R) :- strict_head(R,_).
+in(R) :- head(R,_), not out(R).
+out(R) :- head(R,_), not in(R).
+
+%% Everything derivable from premises (incl. axioms) that are in
+supported(X) :- axiom(X).
+supported(X) :- premise(X), in(X).
+supported(X) :- head(R,X), triggered_by_in(R).
+supported(X) :- strict_head(R,X), triggered_by_in(R).
+triggered_by_in(R) :- in(R), head(R,_), supported(X) : body(R,X).
+triggered_by_in(R) :- strict_head(R,_), supported(X) : strict_body(R,X).
+
+%% reduce redundancy
+:- in(R), not triggered_by_in(R), head(R,_).
+
+%% premises and defeasible rules attacked by the in arguments
+defeated(X) :- supported(Y), contrary(X,Y), premise(X).
+defeated(X) :- supported(Y), contrary(X,Y), head(X,_).
+
+%% defeasible rules whose conclusion is attacked by in
+defeated(X) :- head(X,S), supported(Y), contrary(S,Y).
+
+%% Conflict-freeness (for both premises and rules??)
+:- in(X), defeated(X).
+
+%% Everything derivable from undefeated premises (incl. axioms)
+supported_by_undefeated(X) :- axiom(X).
+supported_by_undefeated(X) :- premise(X), not defeated(X).
+supported_by_undefeated(X) :- head(R,X), triggered_by_undefeated(R).
+supported_by_undefeated(X) :- strict_head(R,X), triggered_by_undefeated(R).
+triggered_by_undefeated(R) :- not defeated(R), head(R,_), supported_by_undefeated(X) : body(R,X).
+triggered_by_undefeated(R) :- strict_head(R,_), supported_by_undefeated(X) : strict_body(R,X).
+
+defeated_by_undefeated(X) :- supported_by_undefeated(Y), contrary(X,Y), premise(X).
+defeated_by_undefeated(X) :- supported_by_undefeated(Y), contrary(X,Y), head(X,_).
+defeated_by_undefeated(X) :- head(X,S), supported_by_undefeated(Y), contrary(S,Y).
+
+%% admissible
+:- in(X), defeated_by_undefeated(X).
+
+%% Everything derivable from premises and rules not defeated by undefeated ones
+supported_by_defended(X) :- axiom(X).
+supported_by_defended(X) :- premise(X), not defeated_by_undefeated(X).
+supported_by_defended(X) :- head(R,X), triggered_by_defended(R).
+supported_by_defended(X) :- strict_head(R,X), triggered_by_defended(R).
+triggered_by_defended(R) :- not defeated_by_undefeated(R), head(R,_), supported_by_defended(X) : body(R,X).
+triggered_by_defended(R) :- strict_head(R,_), supported_by_defended(X) : strict_body(R,X).
+
+%% complete
+%:- not supported(X), supported_by_defended(X).
+:- out(X), not defeated_by_undefeated(X), premise(X).
+:- out(R), triggered_by_defended(R).
+
+%% credulous
+:- not supported(X), query(X).
+
+%% skeptical
+%:- supported(X), query(X).
+
+inrule(X) :- head(X,_), in(X).
+inpremise(X) :- premise(X), in(X).
+
+%#show in/1.
+#show inrule/1.
+#show inpremise/1.
+#show supported/1.
+%#show triggered_by_in/1.
