@@ -1,0 +1,10 @@
+# run: conda env create --file environment.yml
+name: flexaspic_env
+channels:
+  - anaconda
+  - potassco
+  - conda-forge
+dependencies:
+  - clingo
+  - alive-progress
+  - pandas
