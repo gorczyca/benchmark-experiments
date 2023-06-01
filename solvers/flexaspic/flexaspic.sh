@@ -8,7 +8,7 @@ SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 FLEXASPIC_JAR_LOCATION="aspic-flexdd-0.1.1.jar"
 
 
-output=$(java -jar "$SCRIPT_DIR/$FLEXABLE_JAR_LOCATION" "$1" -i aspicp -g "$2" -s -t ta -a dabf -o pf1pb2pb1pf2ob2ob1of2)
+output=$(java -jar "$SCRIPT_DIR/$FLEXASPIC_JAR_LOCATION" "$1" -i aspicp -g "$2" -s -t ta -a dabf -o pf1pb2pb1pf2ob2ob1of2)
 
 # echo $output
 if [[ $output == *"YES"* ]]; then
