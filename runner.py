@@ -40,7 +40,12 @@ def get_solver_result(solver, timeout, file, query, semantics):
 if __name__ == '__main__':
     [solver, experiment_type, timeout_str, semantics] = sys.argv[1:5]
 
-    results_file_name = f'outputs/{experiment_type}_{semantics}_{timeout_str}_{solver}.csv'
+    output_dir = f'outputs/{experiment_type}'
+
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    results_file_name = f'{output_dir}/{experiment_type}_{semantics}_{timeout_str}_{solver}.csv'
     outputs_df = get_results_file(results_file_name)
 
     instance_goal_df = pd.read_csv(INSTANCE_GOAL_PAIRS[experiment_type])
