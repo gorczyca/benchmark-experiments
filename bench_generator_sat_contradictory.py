@@ -51,7 +51,7 @@ def create_framework_contradictories(n_sentences, proc_axioms, proc_premises, ma
     for head in remaining_sentences:
         rules_for_this_head = random.randint(0, max_rules_per_head)
         for _ in range(rules_for_this_head):
-            body_size = random.randint(0, max_size_of_bodies)
+            body_size = random.randint(1, max_size_of_bodies)
             body = random.sample(all_sentences, body_size)
             rules.append((head, body))
 
@@ -110,7 +110,8 @@ def print_ASP(framework: Framework, out_filename):
                 out.write(f"contrary({a},{contr}).\n")
         for a, ctr in framework.contradictories.items():
             # For now have only contradictories
-            out.write(f"contradictory({a},{ctr}).\n")
+            out.write(f"contrary({a},{ctr}).\n")
+            out.write(f"contrary({ctr},{a}).\n")
         for rule in framework.defeasible_rules:
             out.write(f"head({rule[0]},{rule[1]}).\n")
             if rule[2]:
@@ -171,8 +172,9 @@ if __name__ == '__main__':
 
     sat_instances_number = 150
     sat_count = 0
+    iteration = 0
     while sat_count < sat_instances_number:
-
+        iteration += 1
         all_size = len(combinations)
         for i, combination in enumerate(combinations):
 
@@ -195,7 +197,7 @@ if __name__ == '__main__':
             goals = random.sample(framework.sentences, sample_size)
 
 
-            output_file_name = f"n={statements_}_rps={max_rules_per_statement_}_spb={max_sentences_per_body_}_cps={max_contraries_per_statement_}_a={axioms_perc_}_p={premises_perc_}_dr={defeasible_rules_ratio_}_ac={atom_contrary_ratio_}_actr={atom_contradictory_ratio}_drc={def_rule_contrary_ratio_}.lp"
+            output_file_name = f"n={statements_}_rps={max_rules_per_statement_}_spb={max_sentences_per_body_}_cps={max_contraries_per_statement_}_a={axioms_perc_}_p={premises_perc_}_dr={defeasible_rules_ratio_}_ac={atom_contrary_ratio_}_actr={atom_contradictory_ratio}_drc={def_rule_contrary_ratio_}_{iteration}.lp"
             
             asp_benchmark_loc = f'{ASPFORASPIC_BENCHMARKS_LOC}/{output_file_name}'
             flex_benchmark_loc = f'{FLEXASPIC_BENCHMARKS_LOC}/{output_file_name}'

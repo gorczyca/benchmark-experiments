@@ -11,7 +11,7 @@ ASPFORASPIC_BENCHMARKS_LOC = 'instances/flat/aspforaspic'
 FLEXASPIC_BENCHMARKS_LOC = 'instances/flat/flexaspic'
 
 
-OUTPUT_CSV_LOC = 'results_gen_sat_f;at.csv' 
+OUTPUT_CSV_LOC = 'results_gen_sat_flat.csv' 
 # INST_GOAL_CSV_LOC = 'inst_goal_sat.csv'
 
 TIMEOUT = 600
@@ -175,8 +175,10 @@ if __name__ == '__main__':
 
     sat_instances_number = 150
     sat_count = 0
-    while sat_count < sat_instances_number:
+    iteration = 0
 
+    while sat_count < sat_instances_number:
+        iteration += 1
         all_size = len(combinations)
         for i, combination in enumerate(combinations):
 
@@ -195,7 +197,7 @@ if __name__ == '__main__':
             goals = random.sample(framework.sentences, sample_size)
 
 
-            output_file_name = f"n={statements_}_rps={max_rules_per_statement_}_spb={max_sentences_per_body_}_cps={max_contraries_per_statement_}_a={axioms_perc_}_p={premises_perc_}_dr={defeasible_rules_ratio_}_ac={atom_contrary_ratio_}_drc={def_rule_contrary_ratio_}.lp"
+            output_file_name = f"n={statements_}_rps={max_rules_per_statement_}_spb={max_sentences_per_body_}_cps={max_contraries_per_statement_}_a={axioms_perc_}_p={premises_perc_}_dr={defeasible_rules_ratio_}_ac={atom_contrary_ratio_}_drc={def_rule_contrary_ratio_}_{iteration}.lp"
             
             asp_benchmark_loc = f'{ASPFORASPIC_BENCHMARKS_LOC}/{output_file_name}'
             flex_benchmark_loc = f'{FLEXASPIC_BENCHMARKS_LOC}/{output_file_name}'

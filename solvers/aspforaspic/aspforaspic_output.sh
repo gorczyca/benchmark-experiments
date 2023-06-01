@@ -17,5 +17,15 @@ SEMANTICS="adm-aspic.dl"
 echo "query($2)." > ${ASP_FOR_ASPIC_DIR}/query.dl
 
 # ${CLINGO_DIR} ${ASP_FOR_ASPIC_DIR}/no_preferences_encodings/${SEMANTICS} ${INSTANCES_DIR}/$1 ${ASP_FOR_ASPIC_DIR}/query.dl # --quiet=3 | grep 'SATISFIABLE\|CPU Time'
-${CLINGO_DIR} ${ASP_FOR_ASPIC_DIR}/no_preferences_encodings/${SEMANTICS} $1 ${ASP_FOR_ASPIC_DIR}/query.dl 0
+# ${CLINGO_DIR} ${ASP_FOR_ASPIC_DIR}/no_preferences_encodings/${SEMANTICS} $1 ${ASP_FOR_ASPIC_DIR}/query.dl 0
+${CLINGO_DIR} ${ASP_FOR_ASPIC_DIR}/no_preferences_encodings/${SEMANTICS} $1 ${ASP_FOR_ASPIC_DIR}/query.dl 1
 
+# solvers/aspforaspic/aspforaspic_output.sh /home/piotr/Dresden/aspic-flexdds/experiments/instances/contradictories/aspforaspic/n=300_rps=2_spb=15_cps=1_a=0.05_p=0.25_dr=0.25_ac=0.25_actr=0.5_drc=0.25.lp s70
+
+# solvers/aspforaspic/aspforaspic_output.sh /home/piotr/Dresden/aspic-flexdds/experiments/instances/contradictories/aspforaspic/n=400_rps=2_spb=15_cps=1_a=0.05_p=0.25_dr=0.25_ac=0.25_actr=0.5_drc=0.25.lp s225
+
+
+
+# n=300_rps=2_spb=15_cps=1_a=0.05_p=0.25_dr=0.25_ac=0.25_actr=0.5_drc=0.25.lp,s70,n,3.43
+
+# n=400_rps=2_spb=15_cps=1_a=0.05_p=0.25_dr=0.25_ac=0.25_actr=0.5_drc=0.25.lp,s225,n,1.09
