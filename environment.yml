@@ -1,6 +1,7 @@
 # run: conda env create --file environment.yml
 name: flexaspic_env
 channels:
+  - defaults
   - anaconda
   - potassco
   - conda-forge
