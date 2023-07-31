@@ -18,10 +18,10 @@ def get_results_file(results_file_name):
 
 # solvers/flexaspic/flexaspic.sh instances/exp_1/flexaspic/exp_cycles_depvary_step10_batch_yyy01.pl p3 adm
 
-def get_solver_result(solver, timeout, file, query, semantics):
+def get_solver_result(solver_path, solver, timeout, file, query, semantics):
     # task = 'DC-CO' if SEMANTICS == 'com' else 'DC-ST'
 
-    bash_script_loc = SOLVERS[solver]['bash_script_loc']
+    bash_script_loc = f"{solver_path}/{SOLVERS[solver]['bash_script_loc']}"
 
     command = f'{bash_script_loc} {file} {query} {semantics}'
 
@@ -64,7 +64,7 @@ if __name__ == '__main__':
                 continue
 
             full_file_path = f"{instances_path}/{SOLVERS[solver]['benchmarks'][experiment_type]}/{row.instance}"
-            result, duration = get_solver_result(solver, int(timeout_str), full_file_path, row.goal, semantics)
+            result, duration = get_solver_result(solver_path, solver, int(timeout_str), full_file_path, row.goal, semantics)
             row_to_append = pd.DataFrame({
                 'instance': [row.instance],
                 'goal': [row.goal],
