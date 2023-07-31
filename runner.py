@@ -40,9 +40,9 @@ def get_solver_result(solver, timeout, file, query, semantics):
 if __name__ == '__main__':
 
     # running locally
-    #python runner.py flexaspic animals 600 adm "/home/piotr/Dresden/aspic-flexdds/2_instances" "/home/piotr/Dresden/aspic-flexdds/3_instance_goal" "/home/piotr/Dresden/aspic-flexdds/5_outputs"
+    #python runner.py flexaspic thimm_animals 600 adm "/home/piotr/Dresden/aspic-flexdds/2_instances" "/home/piotr/Dresden/aspic-flexdds/3_instance_goal" "/home/piotr/Dresden/aspic-flexdds/5_outputs"
 
-    [solver, experiment_type, timeout_str, semantics, instances_path, instance_goal_path, outputs_path] = sys.argv[1:5]
+    [solver, experiment_type, timeout_str, semantics, instances_path, instance_goal_path, outputs_path] = sys.argv[1:]
 
     output_dir = f'{outputs_path}/{experiment_type}'
 
