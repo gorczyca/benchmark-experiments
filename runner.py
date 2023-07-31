@@ -38,9 +38,13 @@ def get_solver_result(solver, timeout, file, query, semantics):
 
 
 if __name__ == '__main__':
-    [solver, experiment_type, timeout_str, semantics] = sys.argv[1:5]
 
-    output_dir = f'outputs/{experiment_type}'
+    # instances and (instances & goals) path
+    # outputs path
+
+    [solver, experiment_type, timeout_str, semantics, instances_path, instance_goal_path, outputs_path] = sys.argv[1:5]
+
+    output_dir = f'{outputs_path}/{experiment_type}'
 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -48,7 +52,7 @@ if __name__ == '__main__':
     results_file_name = f'{output_dir}/{experiment_type}_{semantics}_{timeout_str}_{solver}.csv'
     outputs_df = get_results_file(results_file_name)
 
-    instance_goal_df = pd.read_csv(INSTANCE_GOAL_PAIRS[experiment_type])
+    instance_goal_df = pd.read_csv(f'{instance_goal_path}/{INSTANCE_GOAL_PAIRS[experiment_type]}')
     instance_goal_df_size = len(instance_goal_df)
 
     with alive_bar(instance_goal_df_size, dual_line=True, title=solver) as bar:
@@ -59,7 +63,7 @@ if __name__ == '__main__':
                 bar()
                 continue
 
-            full_file_path = f"{SOLVERS[solver]['benchmarks'][experiment_type]}/{row.instance}"
+            full_file_path = f"{instances_path}/{SOLVERS[solver]['benchmarks'][experiment_type]}/{row.instance}"
             result, duration = get_solver_result(solver, int(timeout_str), full_file_path, row.goal, semantics)
             row_to_append = pd.DataFrame({
                 'instance': [row.instance],

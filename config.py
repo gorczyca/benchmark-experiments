@@ -10,6 +10,9 @@ INSTANCE_GOAL_PAIRS = {
     'nonflat_unsat': 'instance_goal/nonflat_unsat.csv',
     'wellformed_sat': 'instance_goal/wellformed_sat.csv',
     'wellformed_unsat': 'instance_goal/wellformed_unsat.csv',    
+    'animals_aspic_instances': '/home/piotr/Dresden/aspic-flexdds/aaai/ds_aspic2019/animals_aspic_instances.csv',
+    'maxsat_aspic_instances': '/home/piotr/Dresden/aspic-flexdds/aaai/ds_aspic2019/maxsat_aspic_instances.csv',
+    'random_aspic_instances': '/home/piotr/Dresden/aspic-flexdds/aaai/ds_aspic2019/random_aspic_instances.csv'
 }
 
 
@@ -27,7 +30,11 @@ SOLVERS = {
             'nonflat_sat': 'instances/nonflat/flexaspic',
             'nonflat_unsat': 'instances/nonflat/flexaspic',
             'wellformed_sat': 'instances/wellformed/flexaspic',
-            'wellformed_unsat': 'instances/wellformed/flexaspic'
+            'wellformed_unsat': 'instances/wellformed/flexaspic',
+            'animals_aspic_instances': '/home/piotr/Dresden/aspic-flexdds/aaai/ds_aspic2019/animals_aspic_instances_flexaspic',
+            'maxsat_aspic_instances': '/home/piotr/Dresden/aspic-flexdds/aaai/ds_aspic2019/maxsat_aspic_instances_flexaspic',
+            'random_aspic_instances': '/home/piotr/Dresden/aspic-flexdds/aaai/ds_aspic2019/random_aspic_instances_flexaspic',
+
         }
     },
     'flexable': {
@@ -62,7 +69,11 @@ SOLVERS = {
             'nonflat_sat': 'instances/nonflat/aspforaspic',
             'nonflat_unsat': 'instances/nonflat/aspforaspic',
             'wellformed_sat': 'instances/wellformed/aspforaspic',
-            'wellformed_unsat': 'instances/wellformed/aspforaspic'
+            'wellformed_unsat': 'instances/wellformed/aspforaspic',
+            'animals_aspic_instances': '/home/piotr/Dresden/aspic-flexdds/aaai/ds_aspic2019/animals_aspic_instances_aspforaspic',
+            'maxsat_aspic_instances': '/home/piotr/Dresden/aspic-flexdds/aaai/ds_aspic2019/maxsat_aspic_instances_aspforaspic',
+            'random_aspic_instances': '/home/piotr/Dresden/aspic-flexdds/aaai/ds_aspic2019/random_aspic_instances_aspforaspic',
+
         }
     },
     'abagraph': {

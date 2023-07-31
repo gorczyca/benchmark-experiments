@@ -4,7 +4,9 @@ import pandas as pd
 
 
 # OUTPUTS_PATH = '/home/piotr/Dresden/aspic-flexdds/exp_outs_bak'
-OUTPUTS_PATH = '/home/piotr/Dresden/aspic-flexdds/experiments/outputs/exp_1'
+# OUTPUTS_PATH = '/home/piotr/Dresden/aspic-flexdds/experiments/outputs/exp_1'
+
+OUTPUTS_PATH = '/home/piotr/Dresden/jelia_plots/aba_outputs'
 
 CORRECT_OUTPUT = 'exp_1_adm_600_aspforaba.csv'
 
