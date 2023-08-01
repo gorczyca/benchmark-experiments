@@ -3,8 +3,11 @@
 
 INSTANCE_GOAL_PAIRS = {
     'thimm_animals': 'thimm/animals.csv',
+    'thimm_animals_0.2': 'thimm/animals.csv',
     'thimm_maxsat': 'thimm/maxsat.csv',
-    'thimm_random': 'thimm/random.csv'
+    'thimm_random': 'thimm/random.csv',
+    'thimm_random_0.2': 'thimm/random.csv'
+    
 }
 
 
@@ -13,8 +16,10 @@ SOLVERS = {
         'bash_script_loc': 'solvers/flexaspic/flexaspic.sh',
         'benchmarks': {
             'thimm_animals': 'thimm/animals/flexaspic',
+            'thimm_animals_0.2': 'thimm/animals_0.2/flexaspic',
             'thimm_maxsat': 'thimm/maxsat/flexaspic',
             'thimm_random': 'thimm/random/flexaspic',
+            'thimm_random_0.2': 'thimm/random_0.2/flexaspic',
         }
     },
     'flexable': {
@@ -33,8 +38,10 @@ SOLVERS = {
         'bash_script_loc': 'solvers/aspforaspic/aspforaspic.sh',
         'benchmarks': {
             'thimm_animals': 'thimm/animals/aspforaspic',
+            'thimm_animals_0.2': 'thimm/animals_0.2/aspforaspic',
             'thimm_maxsat': 'thimm/maxsat/aspforaspic',
             'thimm_random': 'thimm/random/aspforaspic',
+            'thimm_random_0.2': 'thimm/random_0.2/aspforaspic',
         }
     },
     'abagraph': {
