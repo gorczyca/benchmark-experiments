@@ -39,8 +39,6 @@ def get_solver_result(solver_path, solver, timeout, file, query, semantics):
 
 if __name__ == '__main__':
 
-    # running locally
-    #python runner.py flexaspic thimm_animals 600 adm "/home/piotr/Dresden/aspic-flexdds/2_instances" "/home/piotr/Dresden/aspic-flexdds/3_instance_goal" "/home/piotr/Dresden/aspic-flexdds/5_outputs"
 
     [solver, experiment_type, timeout_str, semantics, solver_path, instances_path, instance_goal_path, outputs_path] = sys.argv[1:]
 

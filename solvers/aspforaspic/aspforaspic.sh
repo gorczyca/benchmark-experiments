@@ -5,7 +5,8 @@
 # $1 = instance
 # $2 = goal
 # TODO: set this clingo dir only
-CLINGO_DIR="/home/piotr/anaconda3/envs/potassco/bin/clingo"
+# CLINGO_DIR="/home/piotr/anaconda3/envs/potassco/bin/clingo" # local
+CLINGO_DIR="/home/pigo271b/.conda/envs/flexASP/bin/clingo"
 
 
 ASP_FOR_ASPIC_DIR="$(dirname "$(readlink -f "$0")")"
