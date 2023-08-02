@@ -11,3 +11,6 @@
     # test command - single file remote
 
     # /lustre/ssd/ws/pigo271b-flex-ws/benchmark-experiments/solvers/aspforaspic/aspforaspic.sh /lustre/ssd/ws/pigo271b-flex-ws/2_instances/thimm/maxsat/aspforaspic/wcnf_min-width-MinWidthCB_mitdbsample_300_64_1k_6s_3t_6.wcnf_5.aspic p9066 adm
+
+
+for file in /lustre/ssd/ws/pigo271b-flex-ws/4_slurm_scripts/*.sh; do [ -f "$file" ] && sbatch "$file"; done

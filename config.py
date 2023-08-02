@@ -6,8 +6,8 @@ INSTANCE_GOAL_PAIRS = {
     'thimm_animals_0.2': 'thimm/animals.csv',
     'thimm_maxsat': 'thimm/maxsat.csv',
     'thimm_random': 'thimm/random.csv',
-    'thimm_random_0.2': 'thimm/random.csv'
-    
+    'thimm_random_0.2': 'thimm/random.csv',
+    'thimm_random_pyarg': 'thimm/random.csv'    
 }
 
 
@@ -48,6 +48,14 @@ SOLVERS = {
         'bash_script_loc': 'solvers/abagraph/abagraph.sh',
         'benchmarks': {
         }
+    },
+    'py_arg': {
+        'bash_script_loc': 'solvers/py_arg/py_arg.sh',
+        'benchmarks': {
+            'thimm_random_pyarg': 'thimm/random_pyarg',
+        }
     }
+
+
     
 }
