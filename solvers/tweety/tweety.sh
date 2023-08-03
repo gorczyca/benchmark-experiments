@@ -3,10 +3,11 @@
 #$1 instance
 #$2 goal
 
+JAVA="/lustre/ssd/ws/pigo271b-flex-ws/jdk/jdk-20.0.2/bin/java"
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 TWEETY_JAR_LOCATION="tweetywrapper.jar"
 
-output=$(java -jar "$SCRIPT_DIR/$TWEETY_JAR_LOCATION" "$1" "$2")
+output=$("$JAVA" -jar "$SCRIPT_DIR/$TWEETY_JAR_LOCATION" "$1" "$2")
 
 echo $output
 
