@@ -2,8 +2,8 @@
 
 #$1 instance
 #$2 goal
-JAVA="java"
-# JAVA="/lustre/ssd/ws/pigo271b-flex-ws/jdk/jdk-20.0.2/bin/java"
+# JAVA="java"
+JAVA="/lustre/ssd/ws/pigo271b-flex-ws/jdk/jdk-20.0.2/bin/java"
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 TWEETY_JAR_LOCATION="Arg2PWrapper-1.0-SNAPSHOT.jar"
 
