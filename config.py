@@ -7,7 +7,8 @@ INSTANCE_GOAL_PAIRS = {
     'thimm_maxsat': 'thimm/maxsat.csv',
     'thimm_random': 'thimm/random.csv',
     'thimm_random_0.2': 'thimm/random.csv',
-    'thimm_random_pyarg': 'thimm/random.csv'    
+    'thimm_random_pyarg': 'thimm/random.csv',    
+    'thimm_random_tweety': 'thimm/random.csv'    
 }
 
 
@@ -53,6 +54,12 @@ SOLVERS = {
         'bash_script_loc': 'solvers/py_arg/py_arg.sh',
         'benchmarks': {
             'thimm_random_pyarg': 'thimm/random_pyarg',
+        }
+    },
+    'tweety': {
+        'bash_script_loc': 'solvers/tweety/tweety.sh',
+        'benchmarks': {
+            'thimm_random_tweety': 'thimm/random_tweety',
         }
     }
 

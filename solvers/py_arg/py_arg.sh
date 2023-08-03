@@ -20,3 +20,4 @@ echo $output
 # fi
 
 # ./pyarg.sh /home/piotr/Dresden/aspic-flexdds/random_0_pyarg/rand_5_10_2_0.2__14.aspic -a2
+# ./pyarg.sh /lustre/ssd/ws/pigo271b-flex-ws/2_instances/thimm/random_pyarg/rand_5_10_2_0.2__14.aspic -a2
