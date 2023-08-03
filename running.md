@@ -17,5 +17,8 @@ for file in /lustre/ssd/ws/pigo271b-flex-ws/4_slurm_scripts/*.sh; do [ -f "$file
 
 copying 
 
-
+## tweety
 python runner.py tweety thimm_random_tweety 10 adm "/home/piotr/Dresden/aspic-flexdds/1_experiments" "/home/piotr/Dresden/aspic-flexdds/2_instances" "/home/piotr/Dresden/aspic-flexdds/3_instance_goal" "/home/piotr/Dresden/aspic-flexdds/5_outputs"
+
+
+python runner.py arg2p thimm_random_arg2p 10 adm "/home/piotr/Dresden/aspic-flexdds/1_experiments" "/home/piotr/Dresden/aspic-flexdds/2_instances" "/home/piotr/Dresden/aspic-flexdds/3_instance_goal" "/home/piotr/Dresden/aspic-flexdds/5_outputs"

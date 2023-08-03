@@ -8,7 +8,8 @@ INSTANCE_GOAL_PAIRS = {
     'thimm_random': 'thimm/random.csv',
     'thimm_random_0.2': 'thimm/random.csv',
     'thimm_random_pyarg': 'thimm/random.csv',    
-    'thimm_random_tweety': 'thimm/random.csv'    
+    'thimm_random_tweety': 'thimm/random.csv',    
+    'thimm_random_arg2p': 'thimm/random.csv'    
 }
 
 
@@ -61,6 +62,12 @@ SOLVERS = {
         'benchmarks': {
             'thimm_random_tweety': 'thimm/random_tweety',
         }
+    },
+    'arg2p': {
+        'bash_script_loc': 'solvers/arg2p/arg2p.sh',
+        'benchmarks': {
+            'thimm_random_arg2p': 'thimm/random_arg2p',
+        }    
     }
 
 
