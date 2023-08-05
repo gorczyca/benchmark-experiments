@@ -28,7 +28,7 @@ SOLVERS = {
             'generator': 'generator/aspforaspic'
         }
     },
-    'py_arg': {
+    'pyarg': {
         'bash_script_loc': 'solvers/py_arg/py_arg.sh',
         'benchmarks': {
             'thimm_animals': 'thimm/animals/pyarg',
