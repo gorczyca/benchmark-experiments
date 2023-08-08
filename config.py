@@ -5,11 +5,11 @@ INSTANCE_GOAL_PAIRS = {
     'thimm_animals': 'thimm/animals.csv',
     'thimm_maxsat': 'thimm/maxsat_restricted.csv',
     'thimm_random': 'thimm/random.csv',
-    'generator_1': 'generator_1.csv',
-    'generator_2': 'generator_2.csv',
-    'generator_3': 'generator_3.csv',
-    'generator_4': 'generator_4.csv',
-    'generator_5': 'generator_5.csv',
+    'generator_1': 'generator/generator_1.csv',
+    'generator_2': 'generator/generator_2.csv',
+    'generator_3': 'generator/generator_3.csv',
+    'generator_4': 'generator/generator_4.csv',
+    'generator_5': 'generator/generator_5.csv',
 
 }
 
