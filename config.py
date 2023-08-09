@@ -10,6 +10,11 @@ INSTANCE_GOAL_PAIRS = {
     'generator_3': 'generator/generator_3.csv',
     'generator_4': 'generator/generator_4.csv',
     'generator_5': 'generator/generator_5.csv',
+    'generator_hard_1': 'generator_hard/generator_hard_1.csv',
+    'generator_hard_2': 'generator_hard/generator_hard_2.csv',
+    'generator_hard_3': 'generator_hard/generator_hard_3.csv',
+    'generator_hard_4': 'generator_hard/generator_hard_4.csv',
+    'generator_hard_5': 'generator_hard/generator_hard_5.csv',
 
 }
 
@@ -26,6 +31,12 @@ SOLVERS = {
             'generator_3': 'generator/generator_3/flexaspic',
             'generator_4': 'generator/generator_4/flexaspic',
             'generator_5': 'generator/generator_5/flexaspic',
+
+            'generator_hard_1': 'generator_hard/generator_hard_1/flexaspic',
+            'generator_hard_2': 'generator_hard/generator_hard_2/flexaspic',
+            'generator_hard_3': 'generator_hard/generator_hard_3/flexaspic',
+            'generator_hard_4': 'generator_hard/generator_hard_4/flexaspic',
+            'generator_hard_5': 'generator_hard/generator_hard_5/flexaspic',
         }
     },
     'aspforaspic': {
@@ -34,6 +45,12 @@ SOLVERS = {
             'thimm_animals': 'thimm/animals/aspforaspic',
             'thimm_maxsat': 'thimm/maxsat/aspforaspic',
             'thimm_random': 'thimm/random/aspforaspic',
+            'generator_1': 'generator/generator_1/aspforaspic',
+            'generator_2': 'generator/generator_2/aspforaspic',
+            'generator_3': 'generator/generator_3/aspforaspic',
+            'generator_4': 'generator/generator_4/aspforaspic',
+            'generator_5': 'generator/generator_5/aspforaspic',
+
             'generator_1': 'generator/generator_1/aspforaspic',
             'generator_2': 'generator/generator_2/aspforaspic',
             'generator_3': 'generator/generator_3/aspforaspic',
