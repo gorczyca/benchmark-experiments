@@ -51,11 +51,11 @@ SOLVERS = {
             'generator_4': 'generator/generator_4/aspforaspic',
             'generator_5': 'generator/generator_5/aspforaspic',
 
-            'generator_1': 'generator/generator_1/aspforaspic',
-            'generator_2': 'generator/generator_2/aspforaspic',
-            'generator_3': 'generator/generator_3/aspforaspic',
-            'generator_4': 'generator/generator_4/aspforaspic',
-            'generator_5': 'generator/generator_5/aspforaspic',
+            'generator_hard_1': 'generator/generator_1/aspforaspic',
+            'generator_hard_2': 'generator/generator_2/aspforaspic',
+            'generator_hard_3': 'generator/generator_3/aspforaspic',
+            'generator_hard_4': 'generator/generator_4/aspforaspic',
+            'generator_hard_5': 'generator/generator_5/aspforaspic',
         }
     },
     'pyarg': {
